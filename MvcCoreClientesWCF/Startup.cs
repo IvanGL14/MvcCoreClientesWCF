@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MvcCoreClientesWCF.Services;
 using ReferenceCatastro;
+using ReferenceCoches;
 using ReferenceNumberConversion;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,9 @@ namespace MvcCoreClientesWCF
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            CochesContractClient cochesClient = new CochesContractClient(CochesContractClient.EndpointConfiguration.BasicHttpBinding_ICochesContract);
+            services.AddSingleton<CochesContractClient>(x => cochesClient);
+
             services.AddTransient<ServicesCountries>();
 
             NumberConversionSoapTypeClient clientNumberConversion = new NumberConversionSoapTypeClient(EndpointConfiguration.NumberConversionSoap);
@@ -39,6 +43,8 @@ namespace MvcCoreClientesWCF
             services.AddTransient<ServiceCatastro>();
             services.AddTransient<ServiceNumberConversion>();
             services.AddTransient<ServiceVariosMetodos>();
+            services.AddTransient<ServiceCoches>();
+
             services.AddControllersWithViews();
         }
 

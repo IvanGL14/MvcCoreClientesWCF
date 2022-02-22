@@ -1,0 +1,15 @@
+﻿@model Coche
+
+<a asp-action="Index" asp-controller="Coches">Volver</a>
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-warning">
+        Marca: @Model.Marca
+    </li>
+    <li class="list-group-item list-group-item-warning">
+        Modelo: @Model.Modelo
+    </li>
+    <li class="list-group-item list-group-item-warning">
+        Imagen: <img src="@Model.Imagen" style="max-height:100px; max-width:100px;"/>
+    </li>
+</ul>
