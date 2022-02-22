@@ -1,8 +1,26 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model int[]
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <form method="post">
+        <label>Numero para ver su tabla de multiplicar</label>
+        <input type="number" name="numero" class="form-control" />
+        <br />
+        <button class="btn btn-info" type="submit">
+            Enviar
+        </button>
+    </form>
 </div>
+
+@if(Model != null)
+            {
+                <hr />
+                <ul class="list-group">
+                    @foreach (int num in Model)
+                    {
+                        <li class="list-group-item">
+                            @num
+                        </li>
+                    }
+                </ul>
+                
+            }

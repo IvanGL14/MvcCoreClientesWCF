@@ -1,0 +1,14 @@
+﻿@model List<Provincia>
+
+<h1>Provincias</h1>
+<ul>
+    @foreach (Provincia provincia in Model)
+    {
+        <li>
+            @provincia.Nombre 
+            &nbsp;
+            <a asp-controller="Catastro" asp-action="Municipios" asp-route-provincia="@provincia.Nombre" class="btn btn-outline-primary">Municipios</a>
+        </li>
+    }
+
+</ul>

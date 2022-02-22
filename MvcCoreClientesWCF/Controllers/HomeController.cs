@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MvcCoreClientesWCF.Models;
+using MvcCoreClientesWCF.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,16 +12,23 @@ namespace MvcCoreClientesWCF.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private ServiceVariosMetodos service;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ServiceVariosMetodos service)
         {
-            _logger = logger;
+            this.service = service;
         }
 
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(int numero)
+        {
+            int[] results = await this.service.GetTablaMultiplicar(numero);
+            return View(results);
         }
 
         public IActionResult Privacy()

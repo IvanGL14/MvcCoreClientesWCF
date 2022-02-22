@@ -25,7 +25,7 @@ namespace MvcCoreClientesWCF.Controllers
 
         public async Task<IActionResult> Detalles(string iso)
         {
-            FullCountryInfoResponse country = await this.services.InformacionPais(iso);
+            tCountryInfo country = await this.services.InformacionPais(iso);
             return View(country);
         }
     }

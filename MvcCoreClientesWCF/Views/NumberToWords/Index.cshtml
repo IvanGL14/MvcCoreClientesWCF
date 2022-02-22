@@ -1,0 +1,16 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<form method="post">
+    <label>Número: </label>
+    <input type="text" name="numero" class="form-control"/>
+    <button type="submit" class="btn btn-outline-danger">
+        LLamar al servicio
+    </button>
+</form>
+<br />
+<h1 style="color:darkcyan">@ViewData["RESPONSE"]</h1>
+

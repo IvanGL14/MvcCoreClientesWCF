@@ -5,10 +5,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MvcCoreClientesWCF.Services;
+using ReferenceCatastro;
+using ReferenceNumberConversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static ReferenceNumberConversion.NumberConversionSoapTypeClient;
 
 namespace MvcCoreClientesWCF
 {
@@ -25,6 +28,17 @@ namespace MvcCoreClientesWCF
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ServicesCountries>();
+
+            NumberConversionSoapTypeClient clientNumberConversion = new NumberConversionSoapTypeClient(EndpointConfiguration.NumberConversionSoap);
+            services.AddSingleton<NumberConversionSoapTypeClient>(z=> clientNumberConversion);
+
+            //CallejerodelasedeelectrónicadelcatastroSoapClient clientCatastro = new CallejerodelasedeelectrónicadelcatastroSoapClient(CallejerodelasedeelectrónicadelcatastroSoapClient.EndpointConfiguration.Callejero_x0020_de_x0020_la_x0020_sede_x0020_electrónica_x0020_del_x0020_catastro_Soap);
+            services.AddSingleton<CallejerodelasedeelectrónicadelcatastroSoapClient>();
+
+
+            services.AddTransient<ServiceCatastro>();
+            services.AddTransient<ServiceNumberConversion>();
+            services.AddTransient<ServiceVariosMetodos>();
             services.AddControllersWithViews();
         }
 

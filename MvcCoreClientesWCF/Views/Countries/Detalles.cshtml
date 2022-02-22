@@ -1,1 +1,11 @@
-﻿@model FullCountryInfoResponse
+﻿@model tCountryInfo
+
+<ul>
+    <li>ISO CODE: @Model.sISOCode</li>
+    <li>Nombre: @Model.sName</li>
+    <li>Capital: @Model.sCapitalCity</li>
+    <li>Codigo telefono: @Model.sPhoneCode</li>
+    <li>Currency ISO: @Model.sCurrencyISOCode</li>
+    <li>Bandera: @Model.sCountryFlag</li>
+    <li>Lenguas: @Model.Languages</li>
+</ul>

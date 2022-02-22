@@ -1,25 +1,10 @@
 ﻿@model tCountryCodeAndName[]
 
-<ul class="list-group">
-    @foreach (tCountryCodeAndName country in Model)
-    {
-        <li class="list-group-item">
-            @country.sName
-        </li>
-        <li class="list-group-item">
-            @country.sISOCode
-        </li>
-    }
-
-</ul>
 
 <table>
     <thead>
         <tr>
-            <th>Nombre
-            <th>
-            <th>ISO
-            <th>
+            <th>Nombre</th>
             <th>Detalles</th>
         </tr>
     </thead>
